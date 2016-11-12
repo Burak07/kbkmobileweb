@@ -1,0 +1,55 @@
+ //to find automatically dind webpack config gile. -d meansdev
+
+ var path = require("path");
+
+ var DIST_DIR =path.resolve(__dirname,"dist"); // where to copy
+ var SRC_DIR =path.resolve(__dirname,"src"); //where to find
+
+
+ var config = {
+   entry: SRC_DIR + /src/screens/main/index.js; // to tell webpack from which file to start transpale and bundle journey
+   output: {
+      path:DIST_DIR+"/app", //will be created automatically
+      filename:"bundle.js",
+      publicPath: "/src/ "  //our public folder on real server
+  },
+  module:{
+    loaders:[
+      {
+        test:/\.js?/, // tell webpackwhich file should you look at
+        include :SRC_DIR,
+        loader : "babel-loader",
+        query :{
+          presets : ["react","es2015","stage-2"]
+        }
+      }
+    ]
+  }
+ };
+
+ module.exports = config;
+
+
+ module:{
+   loaders:[
+     {
+       test:/\.js?/,
+       include :SRC_DIR,
+       loader1 : "babel-loader",
+       query :{
+         presets : ["react","es2015","stage-2"]
+       }
+     }
+   ]
+ }
+
+ import React from 'react';
+ import ReactDOM from 'react-dom';
+
+ import Greeting from './Greeting';
+ import './index.css';
+
+ ReactDOM.render(
+   <h1>aaa</h1>,
+   document.getElementById('root')
+ );

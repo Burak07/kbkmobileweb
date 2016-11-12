@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Component</title>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <script src="../../js/react.min.js"></script>
+    <script src="../../js/react-dom.min.js"></script>
+    <script src="../../js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+        class Comment extends React.Component {
+          constructor(){
+            super();
+            this.state={
+              isChecked:false,
+            }
+         }
+          edit(){
+            alert("Editing Commnent");
+            this.setState({isChecked:!this.state.isChecked})
+          }
+
+          remove(){
+           alert("Removing Comment")
+          }
+
+           render() {
+            return(
+            <div className="commentContainer">
+              <div className="commentText">{this.props.children}</div>
+               <button onClick="{this.edit}" className="button-primary">Edit</button>
+               <button onClick="{this.remove}" className="button-primary">Remove</button>
+               <input type="checkbox" onChange={this.edit} defaultChecked={this.state.checked} />
+            </div>);
+         }
+}
+        ReactDOM.render(
+          <div className="board">
+           <Comment> commnet1 </Comment>
+          <Comment> comment2 </Comment>
+          </div>,
+        document.getElementById('container'));
+    </script>
+
+</body>
+</html>
