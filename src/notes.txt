@@ -111,3 +111,38 @@
    document.getElementById('root')
  );
 >>>>>>> 1075867593ce3bcdc3c81965ff384918044b682a
+<!--"text/babel" scrptin jsx olduğunu gösteriyor
+
+
+
+var path = require("path");
+
+//var DIST_DIR =path.resolve(__dirname,'dist');
+//var SRC_DIR =path.resolve(__dirname,'src');
+
+
+var config = {
+  entry:"./src/screens/main/index",
+  output: {
+     path:"./dist/app",
+     filename:"bundle.js",
+     publicPath: "/app/ "
+ },
+
+ module:{
+   loaders:[
+     {
+       test:/\.jsx?/,
+       include :"./src",
+       exclude:/node_modules/,
+       loader : "babel-loader",
+       query :{
+         presets : ["react","es2015","stage-2"]
+       }
+     }
+   ]
+ }
+};
+
+module.exports = config;
+-->
